@@ -1,4 +1,4 @@
-# GamesDatabaseForms
+# BlackjackStrategySimulator
 
 ## Overview
 This program is a blackjack simulator and strategy creator.
