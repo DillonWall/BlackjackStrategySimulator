@@ -73,16 +73,19 @@ class Strategy:
 
 #----------Main----------#
 
-_win_rate = .49
-_init_money = 20.00
-_init_bet = 0.50
-_iterations = 200
+#----PUBLIC-VARIABLES----#
+_win_rate = .49             # Chance of winning a hand
+_init_money = 20.00         # Money to start with each day
+_init_bet = 0.50            # Dollar amount to bet initially
+_iterations = 200           # Plays per day
+_num_days = 30000           # Number of days to simulate
+_quiting_amount = 5.00      # Minimum amount of money to stop playing for the day
+_maxing_amount = 30.00      # Maximum amount of money to stop playing for the day
+#------------------------#
+
 _time_when_highest = 0
-_num_days = 30000
 _total_of_highest = 0
-_quiting_amount = 5.00
 _times_left = 0
-_maxing_amount = 30.00
 _times_maxed = 0
 _total_ended = 0
 
@@ -94,19 +97,14 @@ _strategy = Strategy(_init_bet)
 
 random.seed()
 
-#strategy setup
-# _strategy.add_step_to_strategy_when_ahead(Step(StepType.ADD, 0))
-
-# _strategy.add_step_to_strategy_when_behind(Step(StepType.ADD, 0))
-
+#-----STRATEGY-SETUP-----#
 _strategy.add_step_to_strategy_when_ahead(Step(StepType.ADD, 0.25))
 
 _strategy.add_step_to_strategy_when_behind(Step(StepType.MULT, 2))
 _strategy.add_step_to_strategy_when_behind(Step(StepType.MULT, 2))
 _strategy.add_step_to_strategy_when_behind(Step(StepType.ADD, 0.50))
-# _strategy.add_step_to_strategy_when_behind(Step(StepType.ADD, 0.50))
 # _strategy.add_step_to_strategy_when_behind(Step(StepType.RESET))
-
+#------------------------#
 
 #main loop
 for day in range(_num_days):
